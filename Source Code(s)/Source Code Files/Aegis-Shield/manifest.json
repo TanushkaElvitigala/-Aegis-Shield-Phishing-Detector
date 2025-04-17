@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Aegis Sheild",
+  "description": "Real-time URL and email content phishing detection with whitelist/blacklist management.",
+  "version": "4.0",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "notifications",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "https://www.virustotal.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "dynamic_ruleset",
+        "enabled": true,
+        "path": "config/rules.json"
+      }
+    ]
+  }
+}
